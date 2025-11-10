@@ -16,9 +16,9 @@ Emprendimiento de venta de ropa que opera por WhatsApp (estados y chat), sin cat
 ```python
 print("Sistema de tienda virtual iniciado...")
 ```
-# Enlace
+## Enlace
 [Mi perfil de GitHub](https://github.com/alejandraquinones027)
-# Logo
+## Logo
 <img src="https://github.com/alejandraquinones027/EJ-RG-1/raw/main/Logo.png" alt="Logo ComixStore" width="250">
 
 
