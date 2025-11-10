@@ -18,6 +18,6 @@ print("Sistema de tienda virtual iniciado...")
 ```
 [Mi perfil de GitHub](https://github.com/alejandraquinones027)
 
-![Logo ComixStore](./Logo.png)
+![Logo ComixStore](https://raw.githubusercontent.com/alejandraquinones027/EJ-RG-1/main/Logo.png)
 
 
