@@ -1,4 +1,4 @@
-# Sistema de Tienda Virtual por WhatsApp
+# Sistema de Tienda Virtual por WhatsApp 👗📱
 
 Emprendimiento de venta de ropa que opera por WhatsApp (estados y chat), sin catálogo público. El sistema permite generar cards listas para publicar, con foto, SKU, talla, color, precio, logo Además controla inventario por variantes (modelo–talla–color), pedidos, pagos, envíos y devoluciones.
 # Instalación y Ejecución.
@@ -16,8 +16,12 @@ Emprendimiento de venta de ropa que opera por WhatsApp (estados y chat), sin cat
 ```python
 print("Sistema de tienda virtual iniciado...")
 ```
+# Enlace
 [Mi perfil de GitHub](https://github.com/alejandraquinones027)
+# Logo
+<img src="https://github.com/alejandraquinones027/EJ-RG-1/raw/main/Logo.png" alt="Logo ComixStore" width="250">
 
-![Logo ComixStore](https://raw.githubusercontent.com/alejandraquinones027/EJ-RG-1/main/Logo.png)
+
+
 
 
