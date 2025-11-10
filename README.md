@@ -18,5 +18,6 @@ print("Sistema de tienda virtual iniciado...")
 ```
 [Mi perfil de GitHub](https://github.com/alejandraquinones027)
 
-![Logo tienda de camisetas](https://cdn-icons-png.flaticon.com/512/3594/3594634.png)
+![Logo ComixStore](./Logo.png)
+
 
