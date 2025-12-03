@@ -1,0 +1,7 @@
+body {
+    font-size: 0.95rem;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
