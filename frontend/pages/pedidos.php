@@ -6,24 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Hacer pedido - AzuraShirts</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-<body>
-
-<!doctype html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Hacer pedido - AzuraShirts</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- TU CSS DE DISEÑO -->
+    <!-- Tu CSS general -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
 
 <header class="header">
     <div class="container d-flex justify-content-between align-items-center">
@@ -34,10 +23,8 @@
     </div>
 </header>
 
-</header>
-
-<main class="container mb-5">
-    <div class="form-wrapper mx-auto bg-white p-4 rounded-3 shadow-sm">
+<main class="container wrapper-pedido mb-5">
+    <div class="card-pedido-form bg-white p-4">
         <h1 class="h4 mb-3 text-center">Formulario de pedido</h1>
         <p class="text-muted text-center mb-4">
             Completa tus datos para que podamos contactarte por WhatsApp.

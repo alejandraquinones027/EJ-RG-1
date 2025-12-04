@@ -1,11 +1,53 @@
-/* ---- PANTALLA DE INICIO (index.php) ---- */
+/* ========== PALETA FEMENINA SUAVE ========== */
+:root {
+    --rosa-principal: #f06292;
+    --rosa-oscuro: #e0487e;
+    --lila-acento: #9575cd;
+    --fondo-suave: #fff7fb;
+    --fondo-card: #ffffff;
+    --texto: #263238;
+    --borde-suave: #f3d1e1;
+}
+
+/* ========== ESTILO GENERAL DEL SITIO ========== */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #fdf3f7, #e8f0ff);
+    color: var(--texto);
+}
+
+/* BOTONES GENERALES */
+.btn-primary {
+    background-color: var(--rosa-principal);
+    border-color: var(--rosa-principal);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--rosa-oscuro);
+    border-color: var(--rosa-oscuro);
+}
+
+.btn-outline-primary {
+    color: var(--rosa-principal);
+    border-color: var(--rosa-principal);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--rosa-principal);
+    border-color: var(--rosa-principal);
+    color: #ffffff;
+}
+
+/* ========== PANTALLA DE INICIO (index.php) ========== */
 .inicio-wrapper {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    /* degradé más suave y femenino */
     background: radial-gradient(circle at top, #ffe3f0, #e8f0ff);
 }
 
@@ -39,7 +81,7 @@
     border-radius: 28px;
     border: 3px solid #ffd9ec;
     padding: 8px;
-    background: #fff;
+    background: #ffffff;
     box-shadow: 0 10px 25px rgba(240, 98, 146, 0.35);
 }
 
@@ -77,16 +119,11 @@
     font-weight: 500;
 }
 
-/* Botón principal más protagonista */
+/* Botón principal de portada */
 .card-inicio .btn-primary {
-    /* Botón principal de portada: mismo estilo que los otros, sin azul */
-
     background-color: #ffffff;
-    /* fondo blanco */
     color: #f06292;
-    /* texto rosa */
     border: 2px solid #f06292;
-    /* borde rosa */
     font-weight: 600;
     letter-spacing: 0.02em;
 }
@@ -96,21 +133,133 @@
 .card-inicio .btn-primary:focus,
 .card-inicio .btn-primary:active {
     background-color: #f06292;
-    /* rosa sólido */
     color: #ffffff;
-    /* texto blanco */
     border-color: #f06292;
     box-shadow: 0 0 0 0.25rem rgba(240, 98, 146, 0.25);
+}
 
+/* Animación suave de la tarjeta */
+.card-inicio:hover {
+    transform: translateY(-4px);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
 
-    /* ---- FORMULARIO DE PEDIDO (pedidos.php) ---- */
+/* ========== CATÁLOGO (productos.php) ========== */
+
+.header {
+    padding: 15px 0;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--rosa-principal);
+}
+
+.grid-productos {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+
+.card-producto {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f1e4f3;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    background: #ffffff;
+}
+
+.card-producto:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-producto img {
+    height: 230px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* ========== FORMULARIO DE PEDIDO (pedidos.php) ========== */
+
+/* Fondo y espacio general en la página de pedido */
+.wrapper-pedido {
+    padding: 40px 15px;
+}
+
+/* Tarjeta del formulario: aquí controlas que NO ocupe toda la pantalla */
+.card-pedido-form,
 .form-wrapper {
-    max-width: 720px;   /* ancho máximo del formulario */
-    width: 100%;        /* que se adapte en pantallas pequeñas */
-    margin: 40px auto;  /* centrado y con espacio arriba/abajo */
+    max-width: 720px;
+    /* ancho máximo del formulario */
+    width: 100%;
+    /* que se adapte en pantallas pequeñas */
+    margin: 0 auto;
+    /* centrado horizontal */
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #f3e5f5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== LOGIN (login.php) ========== */
+
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #ffeef6, #e8f0ff);
+    padding: 20px;
+}
+
+.card-login {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid #f8c1d9;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== PÁGINAS ADMIN (clientes.php, pedidos_admin.php) ========== */
+
+.wrapper {
+    padding: 20px 15px;
+}
+
+.card-form,
+.tabla-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #f3e5f5;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table thead {
+    background: #fff4f8;
+}
+
+.table thead th {
+    border-bottom-color: #f3d1e1;
+
+
 }
 
 
+/* Formulario de pedido */
+.wrapper-pedido {
+    max-width: 800px;
+    margin: 40px auto;
+}
 
-
+.card-pedido-form {
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }

@@ -9,41 +9,17 @@ $productos = Producto::all();
 <head>
     <meta charset="UTF-8">
     <title>Productos - AzuraShirts</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        .logo {
-            font-weight: 700;
-            font-size: 1.3rem;
-        }
-        .grid-productos {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-        }
-        .card-producto img {
-            height: 230px;
-            object-fit: cover;
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-        }
-        .card-producto {
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-        .card-producto:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-        }
-    </style>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tus estilos generales -->
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <header class="header">
     <div class="container d-flex justify-content-between align-items-center">
         <div class="logo">👕 AzuraShirts</div>
-        <!-- SOLO VOLVER AL INICIO -->
         <a href="../../public/index.php" class="btn btn-outline-secondary btn-sm">
             ← Volver al inicio
         </a>
@@ -70,11 +46,13 @@ $productos = Producto::all();
                          data-sku="<?php echo htmlspecialchars($sku); ?>"
                          data-precio="<?php echo htmlspecialchars($precio); ?>"
                          data-imagen="<?php echo '../../backend/img/' . htmlspecialchars($img); ?>">
+
                     <?php if ($img): ?>
                         <img src="<?php echo '../../backend/img/' . htmlspecialchars($img); ?>"
                              class="card-img-top"
                              alt="<?php echo htmlspecialchars($nombre); ?>">
                     <?php endif; ?>
+
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title"><?php echo htmlspecialchars($nombre); ?></h5>
                         <p class="card-text text-muted mb-2">
@@ -83,9 +61,11 @@ $productos = Producto::all();
                         <p class="fw-semibold mb-3">
                             $<?php echo number_format($precio, 0, ',', '.'); ?>
                         </p>
-                        <button class="btn btn-primary btn-sm btn-hacer-pedido mt-auto">
+
+                        <!-- Enlace al formulario de pedido -->
+                        <a href="pedidos.php" class="btn btn-primary btn-sm mt-auto">
                             Hacer pedido
-                        </button>
+                        </a>
                     </div>
                 </article>
             <?php endforeach; ?>
@@ -93,6 +73,5 @@ $productos = Producto::all();
     <?php endif; ?>
 </main>
 
-<script src="../../backend/js/productos.js"></script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 
 require_once __DIR__ . '/../../backend/core/session.php';
 
-// Si el usuario ya está logueado, lo puedes enviar directo a clientes o dashboard
+// Si el usuario ya está logueado, lo enviamos a clientes
 if (isset($_SESSION['usuario_id'])) {
-    header("Location: clientes.php"); // o la página principal que quieras
+    header("Location: clientes.php");
     exit;
 }
 ?>
@@ -41,6 +41,11 @@ if (isset($_SESSION['usuario_id'])) {
                 <button type="submit" class="btn btn-primary w-100">
                     Entrar
                 </button>
+
+                <!-- Botón para volver al inicio -->
+                <a href="../../public/index.php" class="btn btn-outline-secondary w-100 mt-2">
+                    Volver al inicio
+                </a>
             </form>
 
             <p id="mensaje" class="mt-3 text-center"></p>
@@ -67,8 +72,6 @@ document.getElementById('formLogin').addEventListener('submit', async (e) => {
         if (data.success) {
             mensaje.style.color = 'green';
             mensaje.textContent = data.message || 'Inicio de sesión correcto';
-
-            // Redirigir a la página protegida principal
             window.location.href = 'clientes.php';
         } else {
             mensaje.style.color = 'red';
