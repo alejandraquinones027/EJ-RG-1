@@ -1,6 +1,6 @@
 ## GUIA PASO A PASO PARA IMPLEMENTAR LA BASE DE DATOS DEL PROYECTO "AZURASHIRTS"
 
-CREAR LA BASE DE DATOS
+# CREAR LA BASE DE DATOS
 ```sql
 CREATE DATABASE azurashirts_db;
 ```
@@ -9,7 +9,7 @@ CREATE DATABASE azurashirts_db;
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 ```
 
-1. TABLA PRODUCTOS 
+1. CREANDO LA TABLA PRODUCTOS 
 ```sql
 CREATE TABLE productos (
     id          SERIAL PRIMARY KEY,
@@ -22,7 +22,7 @@ CREATE TABLE productos (
 ```
 
 
-2. TABLA CLIENTES (PANEL DE ADMIN)
+2. CREANDO LA TABLA CLIENTES (PANEL DE ADMIN)
 ```sql
 CREATE TABLE clientes (
     id       SERIAL PRIMARY KEY,
@@ -34,7 +34,7 @@ CREATE TABLE clientes (
 );
 ```
 
-3.TABLA PEDIDOS (PEDIDOS HECHOS DESDE LA WEB)
+3. CREANDO LA TABLA PEDIDOS (PEDIDOS HECHOS DESDE LA WEB)
 ```sql
 CREATE TABLE pedidos (
     id             SERIAL PRIMARY KEY,
@@ -48,7 +48,7 @@ CREATE TABLE pedidos (
     fecha          TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
-4. TABLA USUARIOS (ADMINISTRADORES DEL PANEL)
+4. CREANDO LA TABLA USUARIOS (ADMINISTRADORES DEL PANEL)
 ```sql
 CREATE TABLE usuarios (
     id            SERIAL PRIMARY KEY,
@@ -70,22 +70,21 @@ SELECT * FROM usuarios;
 
 ## INSERTAR USUARIO ADMIN (CONTRASEÑA HASHEADA)
 
-Solo si activaste pgcrypto arriba Cambia 'admin123' por la clave real que quieras usar.
+Solo si activaste pgcrypto arriba,cambia 'admin123' por la clave real que quieras usar.
 
-Resumen de lo que acaba de quedar creado:
-
+# Resumen de lo que acaba de quedar creado:
 *Base de datos*: azurashirts_db
 *Tablas*: productos, clientes, pedidos, usuarios
 *Usuario admin por defecto*: username = 'admin', password = 'admin123'
 
 # Después de esto:
-1.Asegúrate de que en backend/config/database.php (o donde tengas la conexión)
+1. Asegúrate de que en backend/config/database.php (o donde tengas la conexión)
 nombre de la base de datos coincida con azurashirts_db.
-2.Inicia la app en el navegador:
+2. Inicia la app en el navegador:
 /public/index.php  -> portada
 /frontend/pages/login.php -> login admin (usa admin / admin123)
-3.Desde el panel de clientes podrás registrar clientes.
-4.Desde el formulario de pedido, los datos irán a la tabla pedidos.
+3. Desde el panel de clientes podrás registrar clientes.
+4. Desde el formulario de pedido, los datos irán a la tabla pedidos.
 
 
 
