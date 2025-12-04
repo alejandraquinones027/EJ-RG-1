@@ -73,16 +73,16 @@ SELECT * FROM usuarios;
 Solo si activaste pgcrypto arriba,cambia 'admin123' por la clave real que quieras usar.
 
 # Resumen de lo que acaba de quedar creado:
-*Base de datos*: azurashirts_db
-*Tablas*: productos, clientes, pedidos, usuarios
-*Usuario admin por defecto*: username = 'admin', password = 'admin123'
+- *Base de datos*: azurashirts_db
+- *Tablas*: productos, clientes, pedidos, usuarios
+- *Usuario admin por defecto*: username = 'admin', password = 'admin123'
 
 # Después de esto:
 1. Asegúrate de que en backend/config/database.php (o donde tengas la conexión)
 nombre de la base de datos coincida con azurashirts_db.
 2. Inicia la app en el navegador:
-/public/index.php  -> portada
-/frontend/pages/login.php -> login admin (usa admin / admin123)
+-/public/index.php  -> portada
+-/frontend/pages/login.php -> login admin (usa admin / admin123)
 3. Desde el panel de clientes podrás registrar clientes.
 4. Desde el formulario de pedido, los datos irán a la tabla pedidos.
 
