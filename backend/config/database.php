@@ -4,7 +4,7 @@ $host = "localhost";
 $port = "5432";
 $dbname = "azurashirts";
 $user = "postgres";
-$pass = "Tumaco2025";            // Cambia si ya pusiste otra contraseña
+$pass = "1234";            // Cambia si ya pusiste otra contraseña
 
 try {
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
