@@ -1,0 +1,89 @@
+<?php
+// frontend/pages/login.php
+
+require_once __DIR__ . '/../../backend/core/session.php';
+
+// Si el usuario ya está logueado, lo enviamos a clientes
+if (isset($_SESSION['usuario_id'])) {
+    header("Location: clientes.php");
+    exit;
+}
+?>
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Login - AzuraShirts</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="login-wrapper">
+    <div class="card card-login shadow-sm">
+        <div class="card-body">
+            <h1 class="h4 mb-3 text-center">AzuraShirts</h1>
+            <p class="text-center text-muted mb-4">Inicia sesión para gestionar la tienda</p>
+
+            <form id="formLogin" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Entrar
+                </button>
+
+                <!-- Botón para volver al inicio -->
+                <a href="../../public/index.php" class="btn btn-outline-secondary w-100 mt-2">
+                    Volver al inicio
+                </a>
+            </form>
+
+            <p id="mensaje" class="mt-3 text-center"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('formLogin').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const mensaje = document.getElementById('mensaje');
+
+    try {
+        const res = await fetch('../../backend/api/auth.php?action=login', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            mensaje.style.color = 'green';
+            mensaje.textContent = data.message || 'Inicio de sesión correcto';
+            window.location.href = 'clientes.php';
+        } else {
+            mensaje.style.color = 'red';
+            mensaje.textContent = data.message || 'Usuario o contraseña incorrectos';
+        }
+    } catch (err) {
+        console.error(err);
+        mensaje.style.color = 'red';
+        mensaje.textContent = 'Error al conectar con el servidor';
+    }
+});
+</script>
+
+</body>
+</html>
