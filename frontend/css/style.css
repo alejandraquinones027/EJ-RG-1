@@ -1,166 +1,116 @@
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #f8f9fa;
-    color: #212529;
-}
-
-/* --- HEADER --- */
-.header {
-    background: linear-gradient(90deg, #d63384, #ff69b4);
-    padding: 15px 30px;
-    color: white;
+/* ---- PANTALLA DE INICIO (index.php) ---- */
+.inicio-wrapper {
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.menu a {
-    color: white;
-    text-decoration: none;
-    margin: 0 12px;
-    padding: 8px 16px;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.menu a:hover,
-.menu a.active {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-/* --- HERO --- */
-.hero {
-    background: linear-gradient(rgba(67, 97, 238, 0.8), rgba(58, 12, 163, 0.7)), url('https://i.imgur.com/Qajr3dd.jpeg') center/cover no-repeat;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-left: 50px;
-    position: relative;
-}
-
-.hero-content {
-    position: relative;
-    color: white;
-    max-width: 600px;
-    animation: fadeIn 1s ease-out;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin: 0;
-    font-weight: 700;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin: 20px 0 30px;
-    opacity: 0.9;
-}
-
-.btn-primary {
-    background: #4cc9f0;
-    color: white;
-    padding: 14px 32px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(76, 201, 240, 0.4);
-    display: inline-block;
-}
-
-.btn-primary:hover {
-    background: #3ab0d6;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(76, 201, 240, 0.6);
-}
-
-/* --- SERVICIOS --- */
-.servicios-preview {
-    padding: 80px 30px;
-    text-align: center;
-}
-
-.servicios-grid {
-    display: flex;
-    gap: 30px;
     justify-content: center;
-    margin-top: 40px;
-    flex-wrap: wrap;
+    padding: 20px;
+    /* degradé más suave y femenino */
+    background: radial-gradient(circle at top, #ffe3f0, #e8f0ff);
 }
 
-.card {
-    background: white;
-    width: 300px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
-
-.card img {
+/* Tarjeta principal */
+.card-inicio {
+    position: relative;
+    max-width: 820px;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #ffffff, #fff7fb);
+    border: 1px solid #f8c1d9;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
 }
 
-.btn-secondary {
-    text-decoration: none;
-    padding: 12px 24px;
-    color: white;
-    background: #d63384;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    font-weight: 500;
+/* Brillo suave alrededor de la tarjeta */
+.card-inicio::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle at top, rgba(240, 98, 146, 0.18), transparent 60%);
+    opacity: 0.9;
+    z-index: -1;
+}
+
+/* Logo */
+.logo-inicio {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 28px;
+    border: 3px solid #ffd9ec;
+    padding: 8px;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(240, 98, 146, 0.35);
+}
+
+/* Etiqueta “TIENDA DE CAMISETAS” */
+.badge-marca {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 10px;
+    background: rgba(240, 98, 146, 0.12);
+    color: var(--rosa-principal);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
 }
 
-.btn-secondary:hover {
-    background: #3a0ca3;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+/* Título de bienvenida */
+.card-inicio h1.h3 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 8px;
 }
 
-/* --- FOOTER --- */
-.footer {
-    background: #212529;
-    padding: 40px 20px;
-    text-align: center;
-    color: #4cc9f0;
-    margin-top: 60px;
+/* Texto descriptivo */
+.card-inicio p.text-muted {
+    max-width: 620px;
+    margin: 0 auto 20px auto;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Botones de la portada */
+.card-inicio .btn {
+    height: 44px;
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+/* Botón principal más protagonista */
+.card-inicio .btn-primary {
+    /* Botón principal de portada: mismo estilo que los otros, sin azul */
+
+    background-color: #ffffff;
+    /* fondo blanco */
+    color: #f06292;
+    /* texto rosa */
+    border: 2px solid #f06292;
+    /* borde rosa */
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Cuando paso el mouse o doy clic: se rellena de rosa */
+.card-inicio .btn-primary:hover,
+.card-inicio .btn-primary:focus,
+.card-inicio .btn-primary:active {
+    background-color: #f06292;
+    /* rosa sólido */
+    color: #ffffff;
+    /* texto blanco */
+    border-color: #f06292;
+    box-shadow: 0 0 0 0.25rem rgba(240, 98, 146, 0.25);
+
+
+    /* ---- FORMULARIO DE PEDIDO (pedidos.php) ---- */
+.form-wrapper {
+    max-width: 720px;   /* ancho máximo del formulario */
+    width: 100%;        /* que se adapte en pantallas pequeñas */
+    margin: 40px auto;  /* centrado y con espacio arriba/abajo */
+}
+
+
+
+
 }

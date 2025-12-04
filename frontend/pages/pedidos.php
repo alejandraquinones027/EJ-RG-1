@@ -8,37 +8,32 @@
     <title>Hacer pedido - AzuraShirts</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        body {
-            background: #f4f6fb;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-        .header {
-            padding: 15px 0;
-            background: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-        .logo {
-            font-weight: 700;
-            font-size: 1.3rem;
-        }
-        .form-wrapper {
-            max-width: 600px;
-        }
-    </style>
 </head>
 <body>
 
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hacer pedido - AzuraShirts</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- TU CSS DE DISEÑO -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+
 <header class="header">
     <div class="container d-flex justify-content-between align-items-center">
-        <div class="logo">👕 AzuraShirts</div>
-        <nav class="d-flex gap-3">
-            <a href="productos.php" class="link-secondary text-decoration-none">Catálogo</a>
-            <a href="pedidos.php" class="link-secondary text-decoration-none">Hacer pedido</a>
-            <a href="login.php" class="link-secondary text-decoration-none">Admin</a>
-        </nav>
+        <div class="logo">AzuraShirts</div>
+        <a href="../../public/index.php" class="btn btn-outline-secondary btn-sm">
+            ← Volver al inicio
+        </a>
     </div>
+</header>
+
 </header>
 
 <main class="container mb-5">

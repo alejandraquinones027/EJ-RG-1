@@ -11,24 +11,6 @@ require_login_page();
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        body {
-            background: #f4f6fb;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-        .wrapper {
-            padding: 20px;
-        }
-        .card-form, .tabla-wrapper {
-            background: #fff;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-        }
-        .tabla-wrapper {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 

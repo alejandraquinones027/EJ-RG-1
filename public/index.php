@@ -9,45 +9,10 @@ $logeado = isset($_SESSION['usuario_id']);
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Inicio - AzuraShirts</title>
+    <title> AzuraShirts</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            background: linear-gradient(135deg, #f4f6fb, #dde9ff);
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            min-height: 100vh;
-        }
-        .inicio-wrapper {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .card-inicio {
-            max-width: 800px;
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-            background: #ffffff;
-        }
-        .logo-inicio {
-            width: 140px;
-            height: 140px;
-            object-fit: contain;
-        }
-        .badge-marca {
-            background: #0d6efd11;
-            color: #0d6efd;
-            border-radius: 999px;
-            padding: 4px 14px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-    </style>
+    <link rel="stylesheet" href="../frontend/css/style.css">
 </head>
 <body>
 
@@ -55,11 +20,11 @@ $logeado = isset($_SESSION['usuario_id']);
     <div class="card card-inicio border-0">
         <div class="card-body p-4 p-md-5 text-center">
 
-            <!-- LOGO (ajusta la ruta si tu logo está en otra carpeta) -->
-            <img src="../Logo.png" alt="Logo AzuraShirts" class="logo-inicio mb-3">
+            <!-- LOGO -->
+            <img src="../backend/img/Logo.png" alt="Logo AzuraShirts" class="logo-inicio mb-3">
 
             <div class="mb-2">
-                <span class="badge-marca">Tienda de camisetas </span>
+                <span class="badge-marca">Tienda de camisetas</span>
             </div>
 
             <h1 class="h3 mb-2">Bienvenido a <span class="text-primary">AzuraShirts</span></h1>
@@ -81,7 +46,7 @@ $logeado = isset($_SESSION['usuario_id']);
                 </div>
                 <div class="col-12 col-md-4">
                     <?php if ($logeado): ?>
-                        <a href="../frontend/pages/inicio.php" class="btn btn-outline-secondary w-100">
+                        <a href="../frontend/pages/clientes.php" class="btn btn-outline-secondary w-100">
                             Ir al panel de administración
                         </a>
                     <?php else: ?>
@@ -93,7 +58,7 @@ $logeado = isset($_SESSION['usuario_id']);
             </div>
 
             <p class="text-muted small mb-0">
-                Proyecto académico · Tienda virtual AzuraShirts
+                Tienda virtual AzuraShirts
             </p>
         </div>
     </div>

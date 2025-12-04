@@ -1,5 +1,8 @@
 <?php
 // frontend/pages/productos.php
+require_once __DIR__ . '/../../backend/models/Producto.php';
+
+$productos = Producto::all();
 ?>
 <!doctype html>
 <html lang="es">
@@ -9,16 +12,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        body {
-            background: #f4f6fb;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-        .header {
-            padding: 15px 0;
-            background: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
         .logo {
             font-weight: 700;
             font-size: 1.3rem;
@@ -29,8 +22,19 @@
             grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
         }
         .card-producto img {
-            height: 180px;
+            height: 230px;
             object-fit: cover;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        .card-producto {
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .card-producto:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
         }
     </style>
 </head>
@@ -39,50 +43,56 @@
 <header class="header">
     <div class="container d-flex justify-content-between align-items-center">
         <div class="logo">👕 AzuraShirts</div>
-        <nav class="d-flex gap-3">
-            <a href="productos.php" class="link-secondary text-decoration-none">Catálogo</a>
-            <a href="pedidos.php" class="link-secondary text-decoration-none">Hacer pedido</a>
-            <a href="login.php" class="link-secondary text-decoration-none">Admin</a>
-        </nav>
+        <!-- SOLO VOLVER AL INICIO -->
+        <a href="../../public/index.php" class="btn btn-outline-secondary btn-sm">
+            ← Volver al inicio
+        </a>
     </div>
 </header>
 
 <main class="container mb-5">
     <h1 class="h3 mb-4">Nuestras camisetas</h1>
 
-    <section class="grid-productos">
-        <!-- Tarjeta 1 -->
-        <article class="card card-producto"
-                 data-nombre="Camiseta básica blanca"
-                 data-sku="CAM-001"
-                 data-precio="45000"
-                 data-imagen="../../backend/img/Camiseta.jpg">
-            <img src="../../backend/img/Camiseta.jpg" class="card-img-top" alt="Camiseta básica blanca">
-            <div class="card-body">
-                <h5 class="card-title">Camiseta básica blanca</h5>
-                <p class="card-text text-muted mb-2">Perfecta para uso diario.</p>
-                <p class="fw-semibold mb-3">$45.000</p>
-                <button class="btn btn-primary btn-sm btn-hacer-pedido">Hacer pedido</button>
-            </div>
-        </article>
-
-        <!-- Aquí puedes agregar más productos estáticos si quieres -->
-        <article class="card card-producto"
-                 data-nombre="Camiseta Nike"
-                 data-sku="NIKE-001"
-                 data-precio="75000"
-                 data-imagen="../../backend/img/nike.jpg">
-            <img src="../../backend/img/nike.jpg" class="card-img-top" alt="Camiseta Nike">
-            <div class="card-body">
-                <h5 class="card-title">Camiseta Nike</h5>
-                <p class="card-text text-muted mb-2">Estilo deportivo.</p>
-                <p class="fw-semibold mb-3">$75.000</p>
-                <button class="btn btn-primary btn-sm btn-hacer-pedido">Hacer pedido</button>
-            </div>
-        </article>
-
-    </section>
+    <?php if (empty($productos)): ?>
+        <p class="text-muted">Todavía no hay productos registrados.</p>
+    <?php else: ?>
+        <section class="grid-productos">
+            <?php foreach ($productos as $p): ?>
+                <?php
+                    $nombre  = $p['nombre'] ?? '';
+                    $sku     = $p['sku'] ?? '';
+                    $precio  = $p['precio'] ?? 0;
+                    $img     = $p['imagen'] ?? '';
+                    $desc    = $p['descripcion'] ?? 'Camiseta disponible.';
+                ?>
+                <article class="card card-producto"
+                         data-nombre="<?php echo htmlspecialchars($nombre); ?>"
+                         data-sku="<?php echo htmlspecialchars($sku); ?>"
+                         data-precio="<?php echo htmlspecialchars($precio); ?>"
+                         data-imagen="<?php echo '../../backend/img/' . htmlspecialchars($img); ?>">
+                    <?php if ($img): ?>
+                        <img src="<?php echo '../../backend/img/' . htmlspecialchars($img); ?>"
+                             class="card-img-top"
+                             alt="<?php echo htmlspecialchars($nombre); ?>">
+                    <?php endif; ?>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><?php echo htmlspecialchars($nombre); ?></h5>
+                        <p class="card-text text-muted mb-2">
+                            <?php echo htmlspecialchars($desc); ?>
+                        </p>
+                        <p class="fw-semibold mb-3">
+                            $<?php echo number_format($precio, 0, ',', '.'); ?>
+                        </p>
+                        <button class="btn btn-primary btn-sm btn-hacer-pedido mt-auto">
+                            Hacer pedido
+                        </button>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+        </section>
+    <?php endif; ?>
 </main>
 
 <script src="../../backend/js/productos.js"></script>
-</bod
+</body>
+</html>
