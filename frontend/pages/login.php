@@ -1,76 +1,98 @@
 <?php
-require_once __DIR__ . '/../../backend/core/session.php';
+// frontend/pages/login.php
 
-// Si ya está autenticado, redirige a clientes
+// Si el usuario ya está logueado, lo puedes enviar directo a clientes o dashboard
+require_once __DIR__ . '/../../backend/core/session.php';
 if (isset($_SESSION['usuario_id'])) {
-    header("Location: clientes.php");
+    header("Location: clientes.php"); // o la página principal que quieras
     exit;
 }
-
-$error = $_GET['error'] ?? '';
 ?>
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Login - Gestor Clientes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
+    <meta charset="utf-8">
+    <title>Login - AzuraShirts</title>
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-      <div class="card shadow">
-        <div class="card-header text-center">
-          <h5>Iniciar sesión</h5>
-        </div>
+    <!-- Si usas Bootstrap, puedes dejar esto, sino quítalo -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        .login-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-login {
+            max-width: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="login-wrapper">
+    <div class="card card-login shadow-sm">
         <div class="card-body">
-          <div id="alerta" class="alert alert-danger d-none"></div>
-          <form id="formLogin">
-            <div class="mb-3">
-              <label class="form-label">Usuario</label>
-              <input type="text" name="username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Contraseña</label>
-              <input type="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Entrar</button>
-          </form>
+            <h1 class="h4 mb-3 text-center">AzuraShirts</h1>
+            <p class="text-center text-muted mb-4">Inicia sesión para gestionar la tienda</p>
+
+            <form id="formLogin" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Entrar
+                </button>
+            </form>
+
+            <p id="mensaje" class="mt-3 text-center"></p>
         </div>
-      </div>
-      <p class="text-muted small mt-3 text-center">
-        Usuario de prueba: <strong>admin</strong> / Contraseña: <strong>admin123</strong>
-      </p>
     </div>
-  </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-$(function() {
-  $('#formLogin').on('submit', function(e) {
+document.getElementById('formLogin').addEventListener('submit', async (e) => {
     e.preventDefault();
-    $('#alerta').addClass('d-none').text('');
 
-    $.ajax({
-      url: '../../backend/api/auth.php?action=login',
-      method: 'POST',
-      data: $(this).serialize(),
-      dataType: 'json',
-      success: function(resp) {
-        if (resp.success) {
-          window.location.href = 'clientes.php';
+    const form = e.target;
+    const formData = new FormData(form);
+    const mensaje = document.getElementById('mensaje');
+
+    try {
+        const res = await fetch('../../backend/api/auth.php?action=login', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            mensaje.style.color = 'green';
+            mensaje.textContent = data.message || 'Inicio de sesión correcto';
+
+            // Redirigir a la página protegida principal (ajusta si quieres otra)
+            window.location.href = 'clientes.php';
         } else {
-          $('#alerta').removeClass('d-none').text(resp.message || 'Error al iniciar sesión');
+            mensaje.style.color = 'red';
+            mensaje.textContent = data.message || 'Usuario o contraseña incorrectos';
         }
-      },
-      error: function() {
-        $('#alerta').removeClass('d-none').text('Error de comunicación con el servidor');
-      }
-    });
-  });
+    } catch (err) {
+        console.error(err);
+        mensaje.style.color = 'red';
+        mensaje.textContent = 'Error al conectar con el servidor';
+    }
 });
 </script>
 

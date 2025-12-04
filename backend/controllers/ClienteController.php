@@ -12,33 +12,17 @@ class ClienteController {
     }
 
     public static function crear($data) {
-        // Validaciones mínimas para la tienda por WhatsApp
         if (trim($data['nombre'] ?? '') === '') {
             return [false, 'El nombre es obligatorio'];
         }
-
-        if (trim($data['whatsapp'] ?? '') === '') {
-            return [false, 'El número de WhatsApp es obligatorio'];
-        }
-
-        // barrio y dirección los dejamos opcionales
         Cliente::create($data);
         return [true, 'Cliente creado correctamente'];
     }
 
     public static function actualizar($data) {
-        if (empty($data['id'])) {
-            return [false, 'ID del cliente inválido'];
+        if (empty($data['id']) || trim($data['nombre'] ?? '') === '') {
+            return [false, 'Datos inválidos'];
         }
-
-        if (trim($data['nombre'] ?? '') === '') {
-            return [false, 'El nombre es obligatorio'];
-        }
-
-        if (trim($data['whatsapp'] ?? '') === '') {
-            return [false, 'El número de WhatsApp es obligatorio'];
-        }
-
         Cliente::update($data);
         return [true, 'Cliente actualizado correctamente'];
     }

@@ -1,57 +1,43 @@
 <?php
-require_once __DIR__ . '/../core/session.php';
 require_once __DIR__ . '/../helpers/response.php';
 require_once __DIR__ . '/../controllers/PedidoController.php';
+require_once __DIR__ . '/../core/session.php';
 
-// Solo usuarios autenticados
-require_login_api();
+function get_request_data() {
+    $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+    if (stripos($contentType, 'application/json') !== false) {
+        $raw  = file_get_contents('php://input');
+        $data = json_decode($raw, true);
+        return is_array($data) ? $data : [];
+    }
+    return $_POST;
+}
 
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
 
-    case 'list':
-        // Lista de pedidos (para DataTables)
-        $pedidos = PedidoController::listar();
-        json_success(['data' => $pedidos]);
-        break;
-
-    case 'get':
-        $id = (int)($_GET['id'] ?? 0);
-        $pedido = PedidoController::obtener($id);
-        if ($pedido) {
-            json_success(['pedido' => $pedido]);
-        } else {
-            json_error('Pedido no encontrado', 404);
-        }
-        break;
-
     case 'create':
-        // Datos vienen por POST desde el formulario de pedidos
-        list($ok, $msg) = PedidoController::crear($_POST);
-        if ($ok) {
-            json_success(['message' => $msg]);
-        } else {
-            json_error($msg);
-        }
+        // Aquí NO exijo login: el cliente puede pedir sin usuario del sistema
+        $data = get_request_data();
+        list($ok, $msg) = PedidoController::crear($data);
+        $ok ? json_success(['message' => $msg])
+            : json_error($msg);
         break;
 
-    case 'update':
-        list($ok, $msg) = PedidoController::actualizar($_POST);
-        if ($ok) {
-            json_success(['message' => $msg]);
+    case 'list':
+    case 'get':
+        // 👉 Solo el admin (o usuario del sistema) puede ver pedidos
+        require_login_api();
+        if ($action === 'list') {
+            $pedidos = PedidoController::listar();
+            json_success(['data' => $pedidos]);
         } else {
-            json_error($msg);
-        }
-        break;
-
-    case 'delete':
-        $id = (int)($_POST['id'] ?? 0);
-        list($ok, $msg) = PedidoController::eliminar($id);
-        if ($ok) {
-            json_success(['message' => $msg]);
-        } else {
-            json_error($msg);
+            $id = (int)($_GET['id'] ?? 0);
+            $pedido = PedidoController::obtener($id);
+            $pedido
+                ? json_success(['pedido' => $pedido])
+                : json_error('Pedido no encontrado', 404);
         }
         break;
 

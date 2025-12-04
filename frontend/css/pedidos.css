@@ -1,0 +1,132 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fef5fb;
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg, #d63384, #ff69b4);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header nav a {
+    text-decoration: none;
+    color: white;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header nav a:hover,
+header nav a.active {
+    text-decoration: underline;
+}
+
+/* Título de sección */
+h1 {
+    text-align: center;
+    margin: 2rem 0;
+    color: #9b4dca;
+}
+
+/* Contenedor de servicios */
+.servicios-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 4rem;
+}
+
+/* Tarjetas de servicio */
+.servicio {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.servicio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.servicio img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+
+
+.servicio h3 {
+    color: #6a0dad;
+    margin-bottom: 0.5rem;
+}
+
+.servicio p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* Botón flotante */
+.btn-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #9b4dca;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+.btn-flotante:hover {
+    background-color: #7a33a3;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media(max-width: 600px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav a {
+        margin: 0.5rem;
+    }
+
+
+}

@@ -1,18 +1,17 @@
 <?php
-// Configuración de conexión a PostgreSQL
-$host = 'localhost';
-$port = '5432';
-$db   = 'WebAZ';
-$user = 'postgres';      // Cambiar por el usuario real de PostgreSQL
-$pass = '1234';  // Cambiar por la contraseña real
 
-$dsn = "pgsql:host=$host;port=$port;dbname=$db";
+$host = "localhost";
+$port = "5432";
+$dbname = "azurashirts";
+$user = "postgres";
+$pass = "1234";            // Cambia si ya pusiste otra contraseña
 
 try {
-    $pdo = new PDO($dsn, $user, $pass, [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
+    $conexion = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
+
 } catch (PDOException $e) {
-    die("Error de conexión a la base de datos: " . $e->getMessage());
+    die(" Error al conectar a PostgreSQL: " . $e->getMessage());
 }
