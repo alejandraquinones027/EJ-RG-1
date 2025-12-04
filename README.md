@@ -1,4 +1,4 @@
-# Sistema de Tienda Virtual por WhatsApp 👗📱
+# Sistema de Tienda Virtual por WhatsApp 👕📱
 
 Emprendimiento de venta de ropa que opera por WhatsApp (estados y chat).El sistema permite generar cards listas para publicar, con foto, SKU, talla, color, precio, logo Además controla inventario por variantes (modelo–talla–color), pedidos, pagos, envíos y devoluciones.
 # Instalación y Ejecución.
