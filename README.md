@@ -16,9 +16,17 @@ CREATE DATABASE azurashirts_db;
 -- Solo si quieres usar crypt()/gen_salt() para el usuario admin:
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
---------------------------------------------------------------------
--- 1. TABLA PRODUCTOS (CAMISETAS)
---------------------------------------------------------------------
+1. TABLA PRODUCTOS 
+```sql
+CREATE TABLE productos (
+    id          SERIAL PRIMARY KEY,
+    nombre      VARCHAR(120) NOT NULL,
+    sku         VARCHAR(50) UNIQUE NOT NULL,
+    descripcion TEXT,
+    precio      INT NOT NULL,          
+    imagen      VARCHAR(255) 
+);
+```
 CREATE TABLE productos (
     id          SERIAL PRIMARY KEY,
     nombre      VARCHAR(120) NOT NULL,
